@@ -53,7 +53,7 @@ Classify the genre of a Disney movie based on its **MPAA rating** and **release 
 
 ### **Visualization**  
 - The decision tree plot illustrates the splitting criteria and movie classification.
-![Decision Tree for Movie Classification](https://i.imgur.com/1cMcZpT.jpg)
+![Decision Tree for Movie Classification](https://imgur.com/a/0onozcz)
 
 ---
 
