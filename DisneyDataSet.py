@@ -1,8 +1,9 @@
 import kagglehub
 from sklearn.preprocessing import LabelEncoder
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+import matplotlib.pyplot as plt
 import pandas as pd
 import os
 
@@ -82,10 +83,51 @@ target = df['genre_Comedy']
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.3, random_state=42)
 
 # Train the decision tree
-clf = DecisionTreeClassifier(max_depth=5)
+clf = DecisionTreeClassifier(criterion='gini', max_depth=5)
 clf.fit(X_train, y_train)
 
 # Evaluate the model
 y_pred = clf.predict(X_test)
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("=" * 40)
+
+# Decision Tree
+plt.figure(figsize=(12, 8), dpi=50)  # Set figure size, dpi for increase resolution
+plot_tree(
+    clf,
+    feature_names=features.columns,
+    class_names=["Not Comedy", "Comedy"],  # Binary target
+    filled=True,
+    rounded=True,
+    fontsize=7
+)
+plt.title("Decision Tree for Movie Classification")
+plt.show()
+
+
+# Create a figure with custom size and resolution
+plt.figure(figsize=(12, 8), dpi=50)  # Set figure size (width x height in inches) and resolution (dots per inch)
+
+# Visualize the decision tree
+# Each parameter 
+# - clf: The decision tree model you've already trained.
+# - feature_names: Labels for each feature used to make decisions in the tree.
+# - class_names: Names for the output classes, replacing generic "0" and "1" with "Not Comedy" and "Comedy".
+# - filled: Adds color to nodes, showing the majority class and class proportions.
+# - rounded: Makes the boxes look smoother and easier to read.
+# - fontsize: Adjusts the text size inside the tree for better visibility
+
+plot_tree(
+    clf,  # Decision tree classifier object
+    feature_names=features.columns,  # Names of the features used in the model
+    class_names=["Not Comedy", "Comedy"],  # Names of the target classes (binary classification)
+    filled=True,  # Fill the nodes with colors to represent class proportions
+    rounded=True,  # Round the edges of the node boxes for better readability
+    fontsize=7  # Set font size for text within the tree
+)
+
+# Add a title to the plot
+plt.title("Decision Tree for Movie Classification")  # Title that explains the purpose of the tree
+
+# Show the plot
+plt.show()  # Display the decision tree
