@@ -39,6 +39,8 @@ Steps for data cleaning:
 - Ensured consistency in categorical data.  
 - Prepared the data for machine learning tasks.
 
+![Decision Tree Visualization](./Images/MissingValues.jpg)
+
 ---
 
 ## **3. Decision Tree Classifier**
@@ -53,7 +55,11 @@ Classify the genre of a Disney movie based on its **MPAA rating** and **release 
 
 ### **Visualization**  
 - The decision tree plot illustrates the splitting criteria and movie classification.
-![Decision Tree for Movie Classification](https://imgur.com/a/0onozcz)
+![Decision Tree Visualization](./Images/DecisionTreeVis.jpg)
+
+The Visualisation above shows that there are potential issues. The potential issues are:
+1. Overfitting: The tree has too many speicfic splits
+2. The visualisation above was just a test, however it does use unimportant features
 
 ---
 
@@ -107,7 +113,7 @@ Identify patterns between `genre` and `MPAA rating`.
 - Graphically display splits based on features like `release year` and `MPAA rating`.
 
 ### **2. Support and Confidence Table**  
-
+Below is an example of what we will do in this section:
 | **Rule**                                      | **Support** | **Confidence** | **Lift** |
 |-----------------------------------------------|-------------|----------------|----------|
 | If a movie is **PG-rated**, it is likely an **Adventure** | 30%         | 80%           | 1.5      |
